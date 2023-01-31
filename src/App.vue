@@ -4,22 +4,17 @@
       <h2>enter task</h2>
       <textarea v-model="task" />
     </div>
-    <div class="tasks">
-      <ul>
-        <li v-for="(task, i) in theList" :key="i">
-          <div class="tas">{{ task }}</div>
-          <button @click="removeTask(i)" class="warn">x</button>
-        </li>
-      </ul>
-    </div>
     <div class="buttons">
       <button @click="addTask" :disabled="!task">add task</button>
       <button @click="clearTasks" class="warn">clear list</button>
     </div>
+    <ListComp :list="theList" :task="task" :removetask="removeTask" />
   </div>
 </template>
 <script>
+import ListComp from "./components/ListComp.vue";
 export default {
+  components: {ListComp},
   data() {
     return {
       theList: [],
@@ -68,25 +63,25 @@ export default {
     height: 30px;
   }
 
-  .tasks {
-    margin-top: 20px;
-    border: 1px solid rgba(12, 10, 10, 0.24);
-    border-radius: 10px;
-    min-height: 200px;
-    align-items: center;
-    li {
-      display: grid;
-      grid-template-columns: 3fr 0.5fr;
-      margin-top: 0.5rem;
-      margin-right: 1rem;
-      align-items: center;
-      .tas {
-        border: 1px solid rgba(12, 10, 10, 0.178);
-        border-radius: 10px;
-        padding: 0.5rem;
-        width: 80%;
-      }
-    }
-  }
+  // .tasks {
+  //   margin-top: 20px;
+  //   border: 1px solid rgba(12, 10, 10, 0.24);
+  //   border-radius: 10px;
+  //   min-height: 200px;
+  //   align-items: center;
+  //   li {
+  //     display: grid;
+  //     grid-template-columns: 3fr 0.5fr;
+  //     margin-top: 0.5rem;
+  //     margin-right: 1rem;
+  //     align-items: center;
+  //     .tas {
+  //       border: 1px solid rgba(12, 10, 10, 0.178);
+  //       border-radius: 10px;
+  //       padding: 0.5rem;
+  //       width: 80%;
+  //     }
+  //   }
+  // }
 }
 </style>
